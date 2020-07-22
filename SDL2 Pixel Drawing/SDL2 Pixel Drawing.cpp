@@ -54,7 +54,13 @@ int main(int argc, char* argv[]) {
 				int mouseY = event.motion.y;
 				for (int i = -2; i < 3; i++) {
 					for (int j = -2; j < 3; j++) {
-						pixels[(mouseX + i) + ((mouseY + j) * 640)] = color;
+						int x = mouseX + i;
+						int y = mouseY + j;
+						if (x < 0 || x>640 || y < 0 || y>480) {
+							continue;
+						} else {
+							pixels[(mouseX + i) + ((mouseY + j) * 640)] = color;
+						}
 					}
 				}
 				/*pixels[mouseX + (mouseY * 640)] = 0;
